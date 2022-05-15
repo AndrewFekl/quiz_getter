@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from .quiz_sourses import JServiceQuiz
 from api.models import Quiz
 from rest_framework.decorators import api_view
@@ -8,9 +7,7 @@ from rest_framework.response import Response
 
 def index_view(request):
 
-    last_record = Quiz.check_for_record_existence('Зимой и летом одним цветом')
-    context = {'last_question': last_record}
-    return render(request, 'main_page.html', context)
+    return render(request, 'main_page.html')
 
 
 @api_view(['POST'])

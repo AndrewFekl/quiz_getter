@@ -15,7 +15,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-DEBUG = os.getenv('DEBUG')
 POSTGRES_NAME = os.getenv('POSTGRES_NAME')
 POSTGRES_USER = os.getenv('POSTGRES_USER')
 POSTGRES_PASSWORD = os.getenv('POSTGRES_PASSWORD')
@@ -33,8 +32,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(DEBUG)
+DEBUG = int(os.environ.get("DEBUG", default=0))
 
+#ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 ALLOWED_HOSTS = ['*']
 
 # Application definition
